@@ -1,12 +1,14 @@
 package com.rain_lovers.huertas_agroecologicas.models;
 
+import com.rain_lovers.huertas_agroecologicas.enums.StateEnum;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,19 +16,17 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "users")
-public class User {
+@Table(name = "states")
+public class State {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @NotBlank
-    private String email;
-
-    @ManyToOne
+    @Enumerated(EnumType.STRING)
     @NotNull
-    private Role role;
+    private StateEnum name;
 
-    @NotNull
-    private State state;
+    public State(StateEnum name) {
+        this.name = name;
+    }
 }
