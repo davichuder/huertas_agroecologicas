@@ -1,5 +1,6 @@
 package com.rain_lovers.huertas_agroecologicas.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
@@ -16,34 +17,36 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "users")
-public class User {
+@Table(name = "post")
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    private String email;
+    private String title;
 
     @NotBlank
-    private String password;
+    private String body;
 
     @NotBlank
-    private String name;
+    private Image image;
 
     @NotBlank
-    private String last_name;
+    private Boolean is_notice;
 
     @NotBlank
-    private boolean application;
+    private LocalDate creation_date;
 
     @NotNull
-    private ArrayList<Post> posts;
-
-    @ManyToOne
-    @NotNull
-    private Role role;
+    private Garden garden;
 
     @NotNull
-    private State state;
+    private Plantation plantation;
+
+    @NotNull
+    private Tag tag;
+
+    @Notnull
+    private ArrayList<Comment> comments;
 }
