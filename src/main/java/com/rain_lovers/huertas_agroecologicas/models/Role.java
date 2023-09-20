@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +24,9 @@ public class Role {
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    @Size(max = 32)
     private RoleEnum name;
+
+    public Role(RoleEnum name) {
+        this.name = name;
+    }
 }
