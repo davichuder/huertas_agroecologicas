@@ -18,9 +18,10 @@ public class RoleService {
     private RoleRepository roleRepository;
 
     public void loadRoles() {
-        Arrays.stream(RoleEnum.values())
+        List<Role> newRoles = Arrays.stream(RoleEnum.values())
                 .filter(roleName -> !roleRepository.findByName(roleName).isPresent())
                 .map(Role::new)
-                .forEach(roleRepository::save);
+                .collect(Collectors.toList());
+        roleRepository.saveAll(newRoles);
     }
 }
