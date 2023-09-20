@@ -18,12 +18,9 @@ public class RoleService {
     private RoleRepository roleRepository;
 
     public void loadRoles() {
-        for (RoleEnum roleName : RoleEnum.values()) {
-            Optional<Role> role = roleRepository.findByName(roleName);
-            if (!role.isPresent()) {
-                Role newRole = new Role(roleName);
-                roleRepository.save(newRole);
-            }
-        }
+        Arrays.stream(RoleEnum.values())
+                .filter(roleName -> !roleRepository.findByName(roleName).isPresent())
+                .map(Role::new)
+                .forEach(roleRepository::save);
     }
 }
