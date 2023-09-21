@@ -21,7 +21,7 @@ public class State {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private int id;
+    private String id;
 
     @Enumerated(EnumType.STRING)
     @NotNull

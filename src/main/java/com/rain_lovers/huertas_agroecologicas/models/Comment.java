@@ -1,14 +1,17 @@
 package com.rain_lovers.huertas_agroecologicas.models;
 
-import com.rain_lovers.huertas_agroecologicas.enums.RoleEnum;
+import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,18 +19,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "roles")
-public class Role {
+@Table(name = "comments")
+public class Comment {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private RoleEnum name;
+    @NotBlank
+    @Column(length = 2000)
+    private String body;
 
-    public Role(RoleEnum name) {
-        this.name = name;
-    }
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    private LocalDate creation_date;
 }

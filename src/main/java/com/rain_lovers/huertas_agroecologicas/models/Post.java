@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "post")
+@Table(name = "posts")
 public class Post {
     @Id
     @GeneratedValue(generator = "uuid")
@@ -30,13 +29,13 @@ public class Post {
     @NotBlank
     private String body;
 
-    @NotBlank
+    @NotNull
     private Image image;
 
-    @NotBlank
+    @NotNull
     private Boolean is_notice;
 
-    @NotBlank
+    @NotNull
     private LocalDate creation_date;
 
     @NotNull
@@ -48,6 +47,6 @@ public class Post {
     @NotNull
     private Tag tag;
 
-    @Notnull
+    @NotNull
     private ArrayList<Comment> comments;
 }

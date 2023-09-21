@@ -1,8 +1,5 @@
 package com.rain_lovers.huertas_agroecologicas.models;
 
-import org.apache.tomcat.util.descriptor.tagplugin.TagPluginParser;
-
-import com.rain_lovers.huertas_agroecologicas.enums.StateEnum;
 import com.rain_lovers.huertas_agroecologicas.enums.TagEnum;
 
 import jakarta.persistence.Entity;
@@ -19,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "tag")
+@Table(name = "tags")
 public class Tag {
     @Id
     @GeneratedValue(generator = "uuid")

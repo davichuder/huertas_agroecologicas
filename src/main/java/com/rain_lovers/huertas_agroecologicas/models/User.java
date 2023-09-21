@@ -29,22 +29,25 @@ public class User {
     @NotBlank
     private String password;
 
+    @ManyToOne
+    @NotNull
+    private Role role;
+
+    @NotNull
+    private Image image;
+
     @NotBlank
     private String name;
 
     @NotBlank
     private String last_name;
 
-    @NotBlank
-    private boolean application;
-
     @NotNull
     private ArrayList<Post> posts;
 
-    @ManyToOne
-    @NotNull
-    private Role role;
+    @NotNull 
+    private State state;
 
     @NotNull
-    private State state;
+    private boolean application;
 }

@@ -4,47 +4,59 @@ CREATE TABLE
         name VARCHAR(255) NOT NULL
     );
 
-ALTER TABLE users
-ADD state_id INT NOT NULL,
-ADD name VARCHAR(255) NOT NULL,
-ADD
-    last_name VARCHAR(255) NOT NULL,
-ADD
-    application TINYINT(1) NOT NULL DEFAULT 0,
-ADD
-    password VARCHAR(255) NOT NULL;
+CREATE TABLE
+    IF NOT EXISTS comments (
+        id VARCHAR(255) PRIMARY KEY,
+        body VARCHAR(255) NOT NULL,
+        creation_date DATE NOT NULL,
+        post_id VARCHAR(255) NOT NULL
+    );
 
 CREATE TABLE
     IF NOT EXISTS posts (
         id VARCHAR(255) PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
-        body VARCHAR(255) NOT NULL,
-        image_id INT NOT NULL,
+        body VARCHAR(2550) NOT NULL,
+        image_id VARCHAR(255),
         is_notice TINYINT(1) NOT NULL DEFAULT 0,
         creation_date DATE NOT NULL,
-        garden_id INT NOT NULL,
-        plantation_id INT NOT NULL,
-        tag_id INT NOT NULL,
-        comments_id INT NOT NULL
+        garden_id VARCHAR(255),
+        plantation_id VARCHAR(255),
+        tag_id VARCHAR(255) NOT NULL,
+        user_id VARCHAR(255) NOT NULL
+    );
+
+ALTER TABLE users
+ADD password VARCHAR(255) NOT NULL,
+ADD image_id VARCHAR(255),
+ADD name VARCHAR(255) NOT NULL,
+ADD last_name VARCHAR(255) NOT NULL,
+ADD state_id VARCHAR(255) NOT NULL,
+ADD application TINYINT(1) NOT NULL DEFAULT 0;
+
+CREATE TABLE
+    IF NOT EXISTS images (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        mime VARCHAR(255) NOT NULL,
+        content LONGBLOB
     );
 
 CREATE TABLE
     IF NOT EXISTS garden (
         id VARCHAR(255) PRIMARY KEY,
-        cellphone VARCHAR(255) NOT NULL,
-        home_id INT NOT NULL,
+        home_id VARCHAR(255) NOT NULL,
         accepted TINYINT(1) NOT NULL DEFAULT 0,
-        plantation_id INT NOT NULL
+        producer_id VARCHAR(255) NOT NULL
     );
 
 CREATE TABLE
     IF NOT EXISTS plantation (
         id VARCHAR(255) PRIMARY KEY,
-        cropType_id INT NOT NULL,
-        harvest_id INT NOT NULL,
-        cropVariety_id INT NOT NULL,
-        plantationState_id INT NOT NULL,
-        additional_notes VARCHAR(255) NOT NULL,
-
-
+        cropType_id VARCHAR(255) NOT NULL,
+        harvest_id VARCHAR(255) NOT NULL,
+        cropVariety_id VARCHAR(255) NOT NULL,
+        plantationState_id VARCHAR(255) NOT NULL,
+        additional_notes VARCHAR(2550) NOT NULL,
+        garden_id VARCHAR(255) NOT NULL
     );
