@@ -1,6 +1,6 @@
 CREATE TABLE
     IF NOT EXISTS states (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id VARCHAR(255) PRIMARY KEY,
         name VARCHAR(255) NOT NULL
     );
 
@@ -16,7 +16,7 @@ ADD
 
 CREATE TABLE
     IF NOT EXISTS posts (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id VARCHAR(255) PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         body VARCHAR(255) NOT NULL,
         image_id INT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS garden (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id VARCHAR(255) PRIMARY KEY,
         cellphone VARCHAR(255) NOT NULL,
         home_id INT NOT NULL,
         accepted TINYINT(1) NOT NULL DEFAULT 0,
@@ -39,12 +39,12 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS plantation (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id VARCHAR(255) PRIMARY KEY,
         cropType_id INT NOT NULL,
         harvest_id INT NOT NULL,
         cropVariety_id INT NOT NULL,
         plantationState_id INT NOT NULL,
         additional_notes VARCHAR(255) NOT NULL,
 
-        
+
     );

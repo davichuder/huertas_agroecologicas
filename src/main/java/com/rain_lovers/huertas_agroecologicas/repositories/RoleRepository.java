@@ -9,6 +9,6 @@ import com.rain_lovers.huertas_agroecologicas.enums.RoleEnum;
 import com.rain_lovers.huertas_agroecologicas.models.Role;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
+public interface RoleRepository extends JpaRepository<Role, String> {
   Optional<Role> findByName(RoleEnum name);
 }

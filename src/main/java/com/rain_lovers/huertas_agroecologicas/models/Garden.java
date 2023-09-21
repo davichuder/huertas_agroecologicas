@@ -2,7 +2,7 @@ package com.rain_lovers.huertas_agroecologicas.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -17,8 +17,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "garden")
 public class Garden {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
     @NotBlank
     private String cellphone;
