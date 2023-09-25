@@ -60,3 +60,13 @@ CREATE TABLE
         additional_notes VARCHAR(2550) NOT NULL,
         garden_id VARCHAR(255) NOT NULL
     );
+
+CREATE TABLE
+    IF NOT EXISTS sowing (
+        id VARCHAR(255) PRIMARY KEY,
+        plantation_id VARCHAR(255) NOT NULL,
+        harvest_estimated_date DATE NOT NULL,
+        sowing_ammount INT NOT NULL,
+        sowing_date DATE NOT NULL,
+       
+    );
