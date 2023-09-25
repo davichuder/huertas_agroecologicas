@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "garden")
+@Table(name = "gardens")
 public class Garden {
     @Id
     @GeneratedValue(generator = "uuid")

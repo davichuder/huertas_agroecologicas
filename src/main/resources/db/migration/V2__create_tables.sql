@@ -43,7 +43,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    IF NOT EXISTS garden (
+    IF NOT EXISTS gardens (
         id VARCHAR(255) PRIMARY KEY,
         home_id VARCHAR(255) NOT NULL,
         accepted TINYINT(1) NOT NULL DEFAULT 0,
@@ -51,7 +51,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    IF NOT EXISTS plantation (
+    IF NOT EXISTS plantations (
         id VARCHAR(255) PRIMARY KEY,
         cropType_id VARCHAR(255) NOT NULL,
         harvest_id VARCHAR(255) NOT NULL,
@@ -62,11 +62,22 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    IF NOT EXISTS sowing (
+    IF NOT EXISTS sowings (
         id VARCHAR(255) PRIMARY KEY,
         plantation_id VARCHAR(255) NOT NULL,
         harvest_estimated_date DATE NOT NULL,
         sowing_ammount INT NOT NULL,
         sowing_date DATE NOT NULL,
-       
+    );
+
+CREATE TABLE
+    IF NOT EXISTS crop_types (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL
+    );
+
+CREATE TABLE
+    IF NOT EXISTS crop_varieties (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL
     );
