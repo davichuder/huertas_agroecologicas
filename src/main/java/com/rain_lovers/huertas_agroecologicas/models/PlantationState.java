@@ -2,6 +2,8 @@ package com.rain_lovers.huertas_agroecologicas.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.rain_lovers.huertas_agroecologicas.enums.PlantationStateEnum;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

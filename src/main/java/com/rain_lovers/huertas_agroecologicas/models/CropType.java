@@ -27,5 +27,5 @@ public class CropType {
     @Column(unique = true)
     private String name;
 
-    private ArrayList<Harvest> cosechas;
+    private ArrayList<Harvest> harvests;
 }
