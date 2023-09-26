@@ -75,7 +75,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    IF NOT EXISTS plantationStates (
+    IF NOT EXISTS plantation_states (
         id VARCHAR(255) PRIMARY KEY,
         state VARCHAR(255) NOT NULL UNIQUE
     );
@@ -115,17 +115,25 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS cities (
         id VARCHAR(255) PRIMARY KEY,
-        name VARCHAR(255) NOT NULL 
+        name VARCHAR(255) NOT NULL
     );
 
 CREATE TABLE
     IF NOT EXISTS provinces (
         id VARCHAR(255) PRIMARY KEY,
-        name VARCHAR(255) NOT NULL 
+        name VARCHAR(255) NOT NULL
     );
 
 CREATE TABLE
     IF NOT EXISTS countries (
         id VARCHAR(255) PRIMARY KEY,
-        name VARCHAR(255) NOT NULL 
+        name VARCHAR(255) NOT NULL
+    );
+
+CREATE TABLE
+    IF NOT EXISTS kg_prices (
+        id VARCHAR(255) PRIMARY KEY,
+        plantation_id VARCHAR(255) NOT NULL,
+        date DATE NOT NULL,
+        price DOUBLE NOT NULL
     );
