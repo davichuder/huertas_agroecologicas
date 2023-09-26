@@ -93,5 +93,17 @@ CREATE TABLE
     IF NOT EXISTS crop_varieties (
         id VARCHAR(255) PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        crop_variety_id VARCHAR(255) NOT NULL
+        harvest_id VARCHAR(255) NOT NULL
+    );
+
+CREATE TABLE
+    IF NOT EXISTS residences (
+        id VARCHAR(255) PRIMARY KEY,
+        country_id VARCHAR(255) NOT NULL,
+        province_id VARCHAR(255) NOT NULL,
+        city_id VARCHAR(255) NOT NULL,
+        street VARCHAR(255) NOT NULL,
+        details VARCHAR(255) NOT NULL,
+        coords POINT NOT NULL,
+        height INT NOT NULL
     );
