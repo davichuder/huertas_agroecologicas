@@ -27,12 +27,16 @@ CREATE TABLE
     );
 
 ALTER TABLE users
-ADD password VARCHAR(255) NOT NULL,
+ADD
+    password VARCHAR(255) NOT NULL,
 ADD image_id VARCHAR(255),
 ADD name VARCHAR(255) NOT NULL,
-ADD last_name VARCHAR(255) NOT NULL,
-ADD state_id VARCHAR(255) NOT NULL,
-ADD application TINYINT(1) NOT NULL DEFAULT 0;
+ADD
+    last_name VARCHAR(255) NOT NULL,
+ADD
+    state_id VARCHAR(255) NOT NULL,
+ADD
+    application TINYINT(1) NOT NULL DEFAULT 0;
 
 CREATE TABLE
     IF NOT EXISTS images (
@@ -85,8 +89,8 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS crop_varieties (
         id VARCHAR(255) PRIMARY KEY,
-        name VARCHAR(255) NOT NULL
-        sowing_date DATE NOT NULL 
+        name VARCHAR(255) NOT NULL,
+        sowing_date DATE NOT NULL
     );
 
 CREATE TABLE
@@ -99,4 +103,22 @@ CREATE TABLE
         details VARCHAR(255) NOT NULL,
         coords POINT NOT NULL,
         height INT NOT NULL
+    );
+
+CREATE TABLE
+    IF NOT EXISTS cities (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL 
+    );
+
+CREATE TABLE
+    IF NOT EXISTS provinces (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL 
+    );
+
+CREATE TABLE
+    IF NOT EXISTS countries (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL 
     );
