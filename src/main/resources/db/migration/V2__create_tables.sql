@@ -107,3 +107,19 @@ CREATE TABLE
         coords POINT NOT NULL,
         height INT NOT NULL
     );
+
+CREATE TABLE
+    IF NOT EXISTS sowing_harvests (
+        id VARCHAR(255) PRIMARY KEY,
+        harvest_date DATE NOT NULL,
+        sowing_ammount INT NOT NULL
+    );
+
+CREATE TABLE
+    IF NOT EXISTS producers (
+        id VARCHAR(255) PRIMARY KEY,
+        user_id VARCHAR(255) NOT NULL,
+        phone VARCHAR(255) NOT NULL,
+        residence_id VARCHAR(255) NOT NULL,
+        cuit VARCHAR(13) NOT NULL
+    );
