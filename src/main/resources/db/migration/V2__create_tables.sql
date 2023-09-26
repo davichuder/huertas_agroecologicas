@@ -87,10 +87,17 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    IF NOT EXISTS harvests (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        crop_type_id VARCHAR(255) NOT NULL
+    );
+
+CREATE TABLE
     IF NOT EXISTS crop_varieties (
         id VARCHAR(255) PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        sowing_date DATE NOT NULL
+        harvest_id VARCHAR(255) NOT NULL
     );
 
 CREATE TABLE
