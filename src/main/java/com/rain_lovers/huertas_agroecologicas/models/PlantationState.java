@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "plantationStates")
+@Table(name = "plantation_states")
 public class PlantationState {
 
     @Id
