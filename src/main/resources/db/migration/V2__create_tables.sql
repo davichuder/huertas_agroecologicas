@@ -67,7 +67,13 @@ CREATE TABLE
         plantation_id VARCHAR(255) NOT NULL,
         harvest_estimated_date DATE NOT NULL,
         sowing_ammount INT NOT NULL,
-        sowing_date DATE NOT NULL,
+        sowing_date DATE NOT NULL
+    );
+
+CREATE TABLE
+    IF NOT EXISTS plantationStates (
+        id VARCHAR(255) PRIMARY KEY,
+        state VARCHAR(255) NOT NULL UNIQUE
     );
 
 CREATE TABLE
@@ -80,4 +86,5 @@ CREATE TABLE
     IF NOT EXISTS crop_varieties (
         id VARCHAR(255) PRIMARY KEY,
         name VARCHAR(255) NOT NULL
+        sowing_date DATE NOT NULL 
     );
