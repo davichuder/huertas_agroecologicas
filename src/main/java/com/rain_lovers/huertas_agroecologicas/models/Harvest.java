@@ -4,10 +4,8 @@ import java.util.ArrayList;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -31,8 +29,6 @@ public class Harvest {
     @Column(unique = true)
     private String name;
 
-    // @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    // @JoinColumn(name = "harvest_id")
     @OneToMany
     @JoinColumn(name = "harvest_id", referencedColumnName = "id")
     private ArrayList<CropVariety> varieties;
