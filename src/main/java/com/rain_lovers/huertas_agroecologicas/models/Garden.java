@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,11 +27,15 @@ public class Garden {
     private String id;
 
     @NotNull
+    @OneToOne
+    @JoinColumn(name = "residence_id", referencedColumnName = "id")
     private Residence residence;
 
     @NotBlank
     private Boolean accepted;
 
     @NotNull
+    @OneToMany
+    @JoinColumn(name = "garden_id", referencedColumnName = "id")
     private ArrayList<Plantation> plantation;
 }

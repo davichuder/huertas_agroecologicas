@@ -1,7 +1,7 @@
 CREATE TABLE
     IF NOT EXISTS roles (
         id VARCHAR(255) PRIMARY KEY,
-        name VARCHAR(255) NOT NULL
+        name VARCHAR(255) NOT NULL UNIQUE
     );
 CREATE TABLE
     IF NOT EXISTS users (

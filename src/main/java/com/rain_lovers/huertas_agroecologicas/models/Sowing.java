@@ -7,6 +7,8 @@ import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,5 +35,7 @@ public class Sowing {
     private LocalDate harvest_estimated_date;
 
     @NotNull
+    @OneToOne
+    @JoinColumn(name = "sowing_id", referencedColumnName = "id")
     private SowingHarvest sowing_harvest;
 }
