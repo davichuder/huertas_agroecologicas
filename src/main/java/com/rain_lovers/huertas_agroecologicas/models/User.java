@@ -6,7 +6,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
     @GeneratedValue(generator = "uuid")
@@ -29,11 +35,14 @@ public class User {
     @NotBlank
     private String password;
 
-    @ManyToOne
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
     @NotNull
+    @OneToOne
+    @JoinColumn(name = "image_id", referencedColumnName = "id")
     private Image image;
 
     @NotBlank
@@ -43,9 +52,13 @@ public class User {
     private String last_name;
 
     @NotNull
+    @OneToMany
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private ArrayList<Post> posts;
 
-    @NotNull 
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "state_id", referencedColumnName = "id")
     private State state;
 
     @NotNull

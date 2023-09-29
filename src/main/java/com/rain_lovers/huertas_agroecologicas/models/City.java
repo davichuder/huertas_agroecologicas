@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "cities")
 public class City {
-
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")

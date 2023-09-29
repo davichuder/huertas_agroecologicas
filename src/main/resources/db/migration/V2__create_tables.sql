@@ -1,7 +1,7 @@
 CREATE TABLE
     IF NOT EXISTS states (
         id VARCHAR(255) PRIMARY KEY,
-        name VARCHAR(255) NOT NULL
+        name VARCHAR(255) NOT NULL UNIQUE
     );
 
 CREATE TABLE
@@ -49,7 +49,7 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS gardens (
         id VARCHAR(255) PRIMARY KEY,
-        home_id VARCHAR(255) NOT NULL,
+        residence_id VARCHAR(255) NOT NULL,
         accepted TINYINT(1) NOT NULL DEFAULT 0,
         producer_id VARCHAR(255) NOT NULL
     );
@@ -77,7 +77,7 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS plantation_states (
         id VARCHAR(255) PRIMARY KEY,
-        state VARCHAR(255) NOT NULL UNIQUE
+        name VARCHAR(255) NOT NULL UNIQUE
     );
 
 CREATE TABLE
@@ -115,6 +115,7 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS sowing_harvests (
         id VARCHAR(255) PRIMARY KEY,
+        sowing_id VARCHAR(255) NOT NULL,
         harvest_date DATE NOT NULL,
         sowing_ammount INT NOT NULL
     );
@@ -152,4 +153,10 @@ CREATE TABLE
         plantation_id VARCHAR(255) NOT NULL,
         date DATE NOT NULL,
         price DOUBLE NOT NULL
+    );
+
+CREATE TABLE
+    IF NOT EXISTS tags (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL UNIQUE
     );

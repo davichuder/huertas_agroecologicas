@@ -7,6 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +34,8 @@ public class Post {
     private String body;
 
     @NotNull
+    @OneToOne
+    @JoinColumn(name = "image_id", referencedColumnName = "id")
     private Image image;
 
     @NotNull
@@ -39,14 +45,22 @@ public class Post {
     private LocalDate creation_date;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "crop_type_id", referencedColumnName = "id")
     private Garden garden;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "plantation_id", referencedColumnName = "id")
     private Plantation plantation;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "tag_id", referencedColumnName = "id")
     private Tag tag;
 
     @NotNull
+    @OneToMany
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
     private ArrayList<Comment> comments;
 }
