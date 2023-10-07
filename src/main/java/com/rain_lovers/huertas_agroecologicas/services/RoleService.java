@@ -11,11 +11,14 @@ import com.rain_lovers.huertas_agroecologicas.enums.RoleEnum;
 import com.rain_lovers.huertas_agroecologicas.models.Role;
 import com.rain_lovers.huertas_agroecologicas.repositories.RoleRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Transactional
     public void loadRoles() {
         List<Role> newRoles = Arrays.stream(RoleEnum.values())
                 .filter(roleName -> !roleRepository.findByName(roleName).isPresent())

@@ -11,11 +11,14 @@ import com.rain_lovers.huertas_agroecologicas.enums.TagEnum;
 import com.rain_lovers.huertas_agroecologicas.models.Tag;
 import com.rain_lovers.huertas_agroecologicas.repositories.TagRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class TagService {
     @Autowired
     private TagRepository tagRepository;
 
+    @Transactional
     public void loadTags() {
         List<Tag> newTags = Arrays.stream(TagEnum.values())
                 .filter(tagName -> !tagRepository.findByName(tagName).isPresent())

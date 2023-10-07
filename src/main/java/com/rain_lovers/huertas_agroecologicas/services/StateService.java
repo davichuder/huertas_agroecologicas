@@ -11,11 +11,14 @@ import com.rain_lovers.huertas_agroecologicas.enums.StateEnum;
 import com.rain_lovers.huertas_agroecologicas.models.State;
 import com.rain_lovers.huertas_agroecologicas.repositories.StateRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class StateService {
     @Autowired
     private StateRepository stateRepository;
 
+    @Transactional
     public void loadStates() {
         List<State> newStates = Arrays.stream(StateEnum.values())
                 .filter(stateName -> !stateRepository.findByName(stateName).isPresent())

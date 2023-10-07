@@ -1,5 +1,7 @@
 package com.rain_lovers.huertas_agroecologicas.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,13 @@ public class CityService {
         }
         City city = new City(name);
         return cityRepository.save(city);
+    }
+
+    public City getCityByName(String string) {
+        Optional<City> optional = cityRepository.findByName(string);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
     }
 }

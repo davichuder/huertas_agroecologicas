@@ -1,5 +1,7 @@
 package com.rain_lovers.huertas_agroecologicas.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,13 @@ public class ProvinceService {
         }
         Province province = new Province(name);
         return provinceRepository.save(province);
+    }
+
+    public Province getProvinceByName(String string) {
+        Optional<Province> optional = provinceRepository.findByName(string);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
     }
 }

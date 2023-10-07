@@ -2,13 +2,20 @@ package com.rain_lovers.huertas_agroecologicas.utility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Component;
 
+import com.rain_lovers.huertas_agroecologicas.models.City;
+import com.rain_lovers.huertas_agroecologicas.models.Country;
+import com.rain_lovers.huertas_agroecologicas.models.Image;
+import com.rain_lovers.huertas_agroecologicas.models.Province;
+import com.rain_lovers.huertas_agroecologicas.models.Residence;
 import com.rain_lovers.huertas_agroecologicas.services.CityService;
 import com.rain_lovers.huertas_agroecologicas.services.CountryService;
 import com.rain_lovers.huertas_agroecologicas.services.ImageService;
 import com.rain_lovers.huertas_agroecologicas.services.PlantationStateService;
 import com.rain_lovers.huertas_agroecologicas.services.ProvinceService;
+import com.rain_lovers.huertas_agroecologicas.services.ResidenceService;
 import com.rain_lovers.huertas_agroecologicas.services.RoleService;
 import com.rain_lovers.huertas_agroecologicas.services.StateService;
 import com.rain_lovers.huertas_agroecologicas.services.TagService;
@@ -39,6 +46,9 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private CityService cityService;
 
+    @Autowired
+    private ResidenceService residenceService;
+
     @Override
     public void run(String... args) {
         roleService.loadRoles();
@@ -46,9 +56,14 @@ public class DataInitializer implements CommandLineRunner {
         plantationStateService.loadPlantationStates();
         stateService.loadStates();
 
-        imageService.saveProfile(null);
+        Image image = imageService.saveProfile(null);
+
         countryService.saveCountry("Argentina");
+        Country country = countryService.getCountryByName("Argentina");
         provinceService.saveProvince("Buenos Aires");
+        Province province = provinceService.getProvinceByName("Buenos Aires");
         cityService.saveCity("Carlos Spegazzini");
+        City city = cityService.getCityByName("Carlos Spegazzini");
+        residenceService.saveResidence(country, province, city, "False Street", "Between Street 1 and Streeet 2", new Point(0, 0), 123);
     }
 }

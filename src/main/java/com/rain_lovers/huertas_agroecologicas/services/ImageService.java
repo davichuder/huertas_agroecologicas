@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.rain_lovers.huertas_agroecologicas.models.Image;
 import com.rain_lovers.huertas_agroecologicas.repositories.ImageRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ImageService {
     @Autowired
@@ -25,6 +27,7 @@ public class ImageService {
         return imageRepository.getById(id);
     }
 
+    @Transactional
     public Image save(MultipartFile file) {
         Image image = new Image();
         if (file != null && !file.getContentType().equals("application/octet-stream")) {
@@ -41,6 +44,7 @@ public class ImageService {
         return null;
     }
 
+    @Transactional
     public Image saveDefaultProfile(MultipartFile file) {
         Image image = new Image();
         try {
@@ -58,6 +62,7 @@ public class ImageService {
         return null;
     }
 
+    @Transactional
     public Image saveProfile(MultipartFile file) {
         Image image = this.save(file);
         if (image == null) {
@@ -66,6 +71,7 @@ public class ImageService {
         return image;
     }
 
+    @Transactional
     public Image update(String idImage, MultipartFile file) {
         Optional<Image> optional_image = imageRepository.findById(idImage);
         if (optional_image.isPresent()) {

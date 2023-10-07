@@ -26,7 +26,7 @@ public class Residence {
 
     @NotNull
     @OneToOne
-    @JoinColumn(name = "cuntry_id", referencedColumnName = "id")
+    @JoinColumn(name = "country_id", referencedColumnName = "id")
     private Country country;
 
     @NotNull
@@ -45,9 +45,9 @@ public class Residence {
     @NotBlank
     private String details;
 
-    @NotBlank
+    @NotNull
     private Point coords;
 
-    @NotBlank
+    @NotNull
     private int height;
 }
