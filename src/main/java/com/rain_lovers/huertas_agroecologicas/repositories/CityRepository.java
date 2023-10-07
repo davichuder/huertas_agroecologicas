@@ -7,5 +7,5 @@ import com.rain_lovers.huertas_agroecologicas.models.City;
 
 @Repository
 public interface CityRepository extends JpaRepository<City, String> {
-
+    Boolean existsByName(String name);
 }

@@ -7,5 +7,5 @@ import com.rain_lovers.huertas_agroecologicas.models.Country;
 
 @Repository
 public interface CountryRepository extends JpaRepository<Country, String> {
-
+    Boolean existsByName(String name);
 }

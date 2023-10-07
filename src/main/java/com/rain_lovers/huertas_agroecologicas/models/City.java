@@ -22,4 +22,8 @@ public class City {
 
     @NotBlank
     private String name;
+
+    public City(String name) {
+        this.name = name;
+    }
 }

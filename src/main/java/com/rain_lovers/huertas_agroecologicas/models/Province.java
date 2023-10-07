@@ -22,4 +22,8 @@ public class Province {
 
     @NotBlank
     private String name;
+
+    public Province(String name) {
+        this.name = name;
+    }
 }
