@@ -9,7 +9,8 @@ CREATE TABLE
         id VARCHAR(255) PRIMARY KEY,
         body VARCHAR(255) NOT NULL,
         creation_date DATE NOT NULL,
-        post_id VARCHAR(255) NOT NULL
+        post_id VARCHAR(255) NOT NULL,
+        user_id VARCHAR(255) NOT NULL
     );
 
 CREATE TABLE
@@ -152,7 +153,7 @@ CREATE TABLE
         id VARCHAR(255) PRIMARY KEY,
         plantation_id VARCHAR(255) NOT NULL,
         date DATE NOT NULL,
-        price DOUBLE NOT NULL
+        price DOUBLE(30,2) NOT NULL
     );
 
 CREATE TABLE

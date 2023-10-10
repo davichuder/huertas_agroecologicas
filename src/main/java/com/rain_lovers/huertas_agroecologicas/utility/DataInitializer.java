@@ -65,5 +65,7 @@ public class DataInitializer implements CommandLineRunner {
         cityService.saveCity("Carlos Spegazzini");
         City city = cityService.getCityByName("Carlos Spegazzini");
         residenceService.saveResidence(country, province, city, "False Street", "Between Street 1 and Streeet 2", new Point(0, 0), 123);
+
+        // Probar crear comentario cuando tenga un usuario
     }
 }

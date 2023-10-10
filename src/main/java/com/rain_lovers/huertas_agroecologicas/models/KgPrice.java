@@ -26,5 +26,5 @@ public class KgPrice {
     private LocalDate date;
 
     @NotBlank
-    private double price;
+    private Double price;
 }

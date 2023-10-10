@@ -1,5 +1,6 @@
 ALTER TABLE comments
-ADD FOREIGN KEY (post_id) REFERENCES posts (id);
+ADD FOREIGN KEY (post_id) REFERENCES posts (id),
+ADD FOREIGN KEY (user_id) REFERENCES users (id);
 
 ALTER TABLE posts
 ADD FOREIGN KEY (image_id) REFERENCES images (id),
