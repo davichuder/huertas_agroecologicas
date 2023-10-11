@@ -2,6 +2,7 @@ package com.rain_lovers.huertas_agroecologicas.services;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,13 @@ public class RoleService {
                 .map(Role::new)
                 .collect(Collectors.toList());
         roleRepository.saveAll(newRoles);
+    }
+
+    public Role getRoleByEnum(RoleEnum roleName) {
+        Optional<Role> role = roleRepository.findByName(roleName);
+        if (role.isPresent()) {
+            return role.get();
+        }
+        return null;
     }
 }

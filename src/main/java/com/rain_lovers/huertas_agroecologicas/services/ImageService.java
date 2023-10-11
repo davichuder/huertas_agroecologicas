@@ -24,7 +24,11 @@ public class ImageService {
     private ResourceLoader resourceLoader;
 
     public Image getOne(String id) {
-        return imageRepository.getById(id);
+        Optional<Image> image = imageRepository.findById(id);
+        if (image.isPresent()) {
+            return image.get();
+        }
+        return null;
     }
 
     @Transactional

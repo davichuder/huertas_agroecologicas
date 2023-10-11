@@ -9,7 +9,7 @@ import com.rain_lovers.huertas_agroecologicas.models.City;
 import com.rain_lovers.huertas_agroecologicas.models.Country;
 import com.rain_lovers.huertas_agroecologicas.models.Image;
 import com.rain_lovers.huertas_agroecologicas.models.Province;
-import com.rain_lovers.huertas_agroecologicas.models.Residence;
+import com.rain_lovers.huertas_agroecologicas.models.User;
 import com.rain_lovers.huertas_agroecologicas.services.CityService;
 import com.rain_lovers.huertas_agroecologicas.services.CountryService;
 import com.rain_lovers.huertas_agroecologicas.services.ImageService;
@@ -19,6 +19,7 @@ import com.rain_lovers.huertas_agroecologicas.services.ResidenceService;
 import com.rain_lovers.huertas_agroecologicas.services.RoleService;
 import com.rain_lovers.huertas_agroecologicas.services.StateService;
 import com.rain_lovers.huertas_agroecologicas.services.TagService;
+import com.rain_lovers.huertas_agroecologicas.services.UserService;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -49,6 +50,9 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private ResidenceService residenceService;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     public void run(String... args) {
         roleService.loadRoles();
@@ -66,6 +70,11 @@ public class DataInitializer implements CommandLineRunner {
         City city = cityService.getCityByName("Carlos Spegazzini");
         residenceService.saveResidence(country, province, city, "False Street", "Between Street 1 and Streeet 2", new Point(0, 0), 123);
 
-        // Probar crear comentario cuando tenga un usuario
+        User user = userService.getUserByEmail("uno@uno.com");
+        if (user == null) {
+            user = userService.saveUser("uno@uno.com", "1234", "uno", "mattel");
+        }
+
+        // Probar crear comentario cuando tenga un usuario y posts
     }
 }

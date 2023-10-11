@@ -1,10 +1,12 @@
 package com.rain_lovers.huertas_agroecologicas.models;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
@@ -40,7 +42,6 @@ public class User {
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
-    @NotNull
     @OneToOne
     @JoinColumn(name = "image_id", referencedColumnName = "id")
     private Image image;
@@ -51,10 +52,9 @@ public class User {
     @NotBlank
     private String last_name;
 
-    @NotNull
     @OneToMany
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private ArrayList<Post> posts;
+    private List<Post> posts;
 
     @NotNull
     @ManyToOne
@@ -63,4 +63,16 @@ public class User {
 
     @NotNull
     private boolean application;
+
+    public User(String email, String password, String name, String lastName, Role role, State state) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.last_name = lastName;
+        this.posts = Collections.emptyList();
+        this.role = role;
+        this.image = null;
+        this.application = false;
+        this.state = state;
+    }
 }
