@@ -9,7 +9,7 @@ CREATE TABLE
         id VARCHAR(255) PRIMARY KEY,
         body VARCHAR(255) NOT NULL,
         creation_date DATE NOT NULL,
-        post_id VARCHAR(255) NOT NULL,
+        post_id VARCHAR(255),
         user_id VARCHAR(255) NOT NULL
     );
 
@@ -24,7 +24,7 @@ CREATE TABLE
         garden_id VARCHAR(255),
         plantation_id VARCHAR(255),
         tag_id VARCHAR(255) NOT NULL,
-        user_id VARCHAR(255) NOT NULL
+        user_id VARCHAR(255)
     );
 
 ALTER TABLE users

@@ -2,6 +2,7 @@ package com.rain_lovers.huertas_agroecologicas.services;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,13 @@ public class TagService {
                 .map(Tag::new)
                 .collect(Collectors.toList());
         tagRepository.saveAll(newTags);
+    }
+
+    public Tag getTagByEnum(TagEnum tagName) {
+        Optional<Tag> tag = tagRepository.findByName(tagName);
+        if (tag.isPresent()) {
+            return tag.get();
+        }
+        return null;
     }
 }

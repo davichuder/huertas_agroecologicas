@@ -1,19 +1,26 @@
 package com.rain_lovers.huertas_agroecologicas.utility;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Component;
 
+import com.rain_lovers.huertas_agroecologicas.enums.TagEnum;
 import com.rain_lovers.huertas_agroecologicas.models.City;
+import com.rain_lovers.huertas_agroecologicas.models.Comment;
 import com.rain_lovers.huertas_agroecologicas.models.Country;
 import com.rain_lovers.huertas_agroecologicas.models.Image;
+import com.rain_lovers.huertas_agroecologicas.models.Post;
 import com.rain_lovers.huertas_agroecologicas.models.Province;
 import com.rain_lovers.huertas_agroecologicas.models.User;
 import com.rain_lovers.huertas_agroecologicas.services.CityService;
+import com.rain_lovers.huertas_agroecologicas.services.CommentService;
 import com.rain_lovers.huertas_agroecologicas.services.CountryService;
 import com.rain_lovers.huertas_agroecologicas.services.ImageService;
 import com.rain_lovers.huertas_agroecologicas.services.PlantationStateService;
+import com.rain_lovers.huertas_agroecologicas.services.PostService;
 import com.rain_lovers.huertas_agroecologicas.services.ProvinceService;
 import com.rain_lovers.huertas_agroecologicas.services.ResidenceService;
 import com.rain_lovers.huertas_agroecologicas.services.RoleService;
@@ -53,6 +60,12 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PostService postService;
+
+    @Autowired
+    private CommentService commentService;
+
     @Override
     public void run(String... args) {
         roleService.loadRoles();
@@ -75,6 +88,20 @@ public class DataInitializer implements CommandLineRunner {
             user = userService.saveUser("uno@uno.com", "1234", "uno", "mattel");
         }
 
-        // Probar crear comentario cuando tenga un usuario y posts
+        Post post = postService.getPostByTitle("Titulo de prueba");
+        if (post == null) {
+            post = postService.savePost("Titulo de prueba", "Body de prueba", TagEnum.PROBLEM);
+        }
+
+        userService.addPost(user, post);
+
+        Comment comment = commentService.getCommentByBody("Comentario de prueba");
+        if (comment == null){
+            comment = commentService.saveComment(user, "Comentario de prueba");
+        }
+
+        postService.addComment(post, comment);
+
+        // Probar cargar residencia a un usuario, y una imagen
     }
 }

@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -52,7 +53,7 @@ public class User {
     @NotBlank
     private String last_name;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private List<Post> posts;
 
@@ -74,5 +75,9 @@ public class User {
         this.image = null;
         this.application = false;
         this.state = state;
+    }
+
+    public void addPost(Post post) {
+        this.posts.add(post);
     }
 }

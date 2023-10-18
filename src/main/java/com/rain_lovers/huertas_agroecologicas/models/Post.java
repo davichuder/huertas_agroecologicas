@@ -1,9 +1,11 @@
 package com.rain_lovers.huertas_agroecologicas.models;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Id;
@@ -33,7 +35,6 @@ public class Post {
     @NotBlank
     private String body;
 
-    @NotNull
     @OneToOne
     @JoinColumn(name = "image_id", referencedColumnName = "id")
     private Image image;
@@ -44,12 +45,10 @@ public class Post {
     @NotNull
     private LocalDate creation_date;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "crop_type_id", referencedColumnName = "id")
     private Garden garden;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "plantation_id", referencedColumnName = "id")
     private Plantation plantation;
@@ -59,8 +58,23 @@ public class Post {
     @JoinColumn(name = "tag_id", referencedColumnName = "id")
     private Tag tag;
 
-    @NotNull
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id", referencedColumnName = "id")
-    private ArrayList<Comment> comments;
+    private List<Comment> comments;
+
+    public Post(String title, String body, Tag tag) {
+        this.title = title;
+        this.body = body;
+        this.image = null;
+        this.is_notice = false;
+        this.creation_date = LocalDate.now();
+        this.garden = null;
+        this.plantation = null;
+        this.tag = tag;
+        this.comments = Collections.emptyList();
+    }
+
+    public void addComment(Comment comment){
+        this.comments.add(comment);
+    }
 }
