@@ -20,14 +20,6 @@ A través de esta aplicación brindaremos herramientas reales de difusión, gene
 - El admin podrá dar privilegios de publicación directa a productores cuyas prácticas agroecológicas hayan sido veriﬁcadas.
 - Las cosechas por huerta son de visualización pública (no es necesario mostrar todos los datos, veriﬁcar cuáles son los relevantes para el público en general)
 
-## Características
-
-- Registro y Login: Los usuarios podrán registrarse e iniciar sesión en la aplicación para acceder a las funcionalidades.
-- Gestión de Perfil: El administrador podrá editar los datos de los usuarios y periodistas.
-- Selección de noticias: los usuarios podrán seleccionar la noticia que deseen ver y volver a la sección de noticias.
-- Creación de noticias: los periodistas e inclusive el administrador, podrán crear noticias, modificarlas o eliminarlas.
-- Cambio de Roles: La aplicación permitirá asignar diferentes roles a los usuarios, con distintos niveles de acceso y funcionalidades.
-
 ## Tecnologias
 
 Buscamos implementar las siguientes tecnologías: 
@@ -47,6 +39,8 @@ Buscamos implementar las siguientes tecnologías:
 *Arquitectura:* API RESTful con uso de JWT Token
 
 ## Aviso
+
+Podran encontrar los diagramas ya hechos en la ruta "\proyectos\Proyecto Huertas\huertas_agroecologicas\diagramas", estos diagramas no son definitivos y pueden cambiar a medida que se avanza con el proyecto.
 
 Todo dev que quiera contribuir, será plenamente aceptado e incluido en el proyecto (o mencionado como dev que aportó en el proyecto), este es un proyecto con fines de práctica y aprendizaje de herramientas nuevas, obviamente toda rama que sea de ayuda es aceptada, ejemplo (Devops, Lider ténico, Scrum, QA, etc.) Saludos!
 
