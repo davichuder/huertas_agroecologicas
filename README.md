@@ -40,7 +40,7 @@ Buscamos implementar las siguientes tecnologías:
 
 ## Aviso
 
-Podran encontrar los diagramas ya hechos en la ruta "\proyectos\Proyecto Huertas\huertas_agroecologicas\diagramas", estos diagramas no son definitivos y pueden cambiar a medida que se avanza con el proyecto.
+Podran encontrar los diagramas ya hechos en la ruta "\Proyecto Huertas\huertas_agroecologicas\diagramas", o bien mencionado, en la carpeta "diagramas", estos diagramas no son definitivos y pueden cambiar a medida que se avanza con el proyecto.
 
 Todo dev que quiera contribuir, será plenamente aceptado e incluido en el proyecto (o mencionado como dev que aportó en el proyecto), este es un proyecto con fines de práctica y aprendizaje de herramientas nuevas, obviamente toda rama que sea de ayuda es aceptada, ejemplo (Devops, Lider ténico, Scrum, QA, etc.) Saludos!
 
