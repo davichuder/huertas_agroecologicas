@@ -20,7 +20,7 @@ A través de esta aplicación brindaremos herramientas reales de difusión, gene
 - El admin podrá dar privilegios de publicación directa a productores cuyas prácticas agroecológicas hayan sido veriﬁcadas.
 - Las cosechas por huerta son de visualización pública (no es necesario mostrar todos los datos, veriﬁcar cuáles son los relevantes para el público en general)
 
-## Tecnologias
+## Tecnologías
 
 Buscamos implementar las siguientes tecnologías: 
 
