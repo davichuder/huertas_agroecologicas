@@ -65,6 +65,9 @@ public class User {
     @NotNull
     private boolean application;
 
+    @NotNull
+    private boolean deleted;
+
     public User(String email, String password, String name, String lastName, Role role, State state) {
         this.email = email;
         this.password = password;
@@ -75,6 +78,7 @@ public class User {
         this.image = null;
         this.application = false;
         this.state = state;
+        this.deleted = false;
     }
 
     public void addPost(Post post) {

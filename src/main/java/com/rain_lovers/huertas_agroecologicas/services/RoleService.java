@@ -16,6 +16,7 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class RoleService {
+
     @Autowired
     private RoleRepository roleRepository;
 
