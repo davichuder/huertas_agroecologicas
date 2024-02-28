@@ -218,7 +218,7 @@ public class UserService {
 
         Optional<User> userFound = userRepository.findByEmail(email);
         verifyDeleted(userFound.get());
-        if (userFound.isPresent()) {
+        if (userFound.isPresent() && userFound.get().) {
             User user = userFound.get();
             user.setImage(image);
             userRepository.save(user);
@@ -262,9 +262,7 @@ public class UserService {
 
     public List<User> listOfUsers() {
 
-        List<User> users = new ArrayList();
-
-        return users = userRepository.findAll();
+        return userRepository.findAll();
 
     }
 
